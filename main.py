@@ -12,6 +12,7 @@ class Solution(object):
         :rtype: ListNode
         """
         first, second = "", ""
+        result = cur = ListNode()
 
         while True:
             first = str(l1.val) + first
@@ -27,6 +28,9 @@ class Solution(object):
 
         sum = int(first) + int(second)
         sum = list(str(sum))
-        sum = list(map(int, sum))
-
-        return sum
+    
+        for digit in reversed(sum):
+            cur.next = ListNode(digit)
+            cur = cur.next
+            
+        return result.next
